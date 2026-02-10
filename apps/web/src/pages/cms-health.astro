@@ -1,0 +1,19 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { checkCMSHealth } from '../lib/cms';
+
+const CMS_URL = import.meta.env.CMS_URL || 'http://localhost:3001';
+let health;
+try {
+  health = await checkCMSHealth(CMS_URL);
+} catch (e) {
+  health = { ok: false, status: 0 };
+}
+---
+
+<BaseLayout title="CMS Health">
+  <h1>CMS Health</h1>
+  <p>CMS_URL: <code>{CMS_URL}</code></p>
+  <p>Status: <code>{health.status}</code></p>
+  <p>OK: <code>{String(health.ok)}</code></p>
+</BaseLayout>
