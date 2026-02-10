@@ -1,11 +1,12 @@
-# Local Docker dev (CMS + Postgres)
+# Local container dev (CMS + Postgres)
 
-From repo root:
+We support running the stack locally using **open-source** tooling.
 
-```bash
-docker compose up --build
-```
+## Option A (recommended): Podman
+See `docs/deploy/PODMAN.md`.
 
+## Compose file
+From repo root, use the included `docker-compose.yml` (Compose spec) to run:
 - CMS: http://localhost:3001
 - Postgres: localhost:5432 (postgres/postgres)
 

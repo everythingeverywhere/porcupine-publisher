@@ -15,6 +15,7 @@ Date: 2026-02-10
   - Phase 2: add SSO (e.g., Cognito/OIDC at ALB)
 - Cloud: AWS-first
 - Separation: Option A — run CMS separately from web (different service/port) for clean deployment to ECS/EKS
+- Local containers: **Podman** (open-source). Rancher Desktop optional later for Kubernetes testing.
 
 ## Current repo status
 ### ✅ Completed
