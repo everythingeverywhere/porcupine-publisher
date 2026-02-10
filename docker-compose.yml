@@ -1,0 +1,28 @@
+services:
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: porcupine
+    ports:
+      - "5432:5432"
+    volumes:
+      - porcupine_pg:/var/lib/postgresql/data
+
+  cms:
+    build:
+      context: .
+      dockerfile: apps/cms/Dockerfile
+    environment:
+      NEXT_PUBLIC_SERVER_URL: http://localhost:3001
+      PAYLOAD_SECRET: local-dev-change-me
+      DATABASE_URL: postgres://postgres:postgres@db:5432/porcupine
+      PORT: 3001
+    ports:
+      - "3001:3001"
+    depends_on:
+      - db
+
+volumes:
+  porcupine_pg:
